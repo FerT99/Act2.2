@@ -295,6 +295,19 @@ void DoubleLinkedList<T>::push_back(T val) {
 template <class T>
 void DoubleLinkedList<T>::insert_before(T lookingFor, T newVal) {
 	// TO DO
+		DoubleLinkedList<T> *newLink, *p;
+
+	newLink = new DoubleLinkedList<T>(val);
+
+	if (empty()) {
+		insertFirst(val);
+		return;
+	} else {
+		tail->next = newLink;
+		newLink->previous = tail;
+		tail = newLink;
+	}
+	size++;
 }
 
 // =================================================================
@@ -305,6 +318,19 @@ void DoubleLinkedList<T>::insert_before(T lookingFor, T newVal) {
 template <class T>
 void DoubleLinkedList<T>::insert_after(T lookingFor, T newVal) {
 	// TO DO
+	DoubleLinkedList<T> *p;
+	int pos = 0;
+
+	if (index < 0 || index >= size) {
+		cout << "No such element" << endl;
+	}
+
+	p = head;
+	while(pos != index) {
+		p = p->next;
+		pos++;
+	}
+	p->value = val;
 }
 
 // =================================================================
